@@ -1,68 +1,91 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SUNGWOOK WEB</title>
+    <title>나만의 홈페이지</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Hahmlet:wght@400;500;600;700&display=swap');
-
-        * {
-            font-family: 'Hahmlet', serif;
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f8ff;
         }
-
-        .title {
+        header {
+            background-color: #4682b4;
             color: white;
-            background-color: orange;
-            font-size: 24px;
-            padding: 4px 14px border-radius: 8px;
+            padding: 10px 20px;
+            text-align: center;
         }
-
-        .bg {
-            width: 360px;
-            background-image: url("https://s3.ap-northeast-2.amazonaws.com/materials.spartacodingclub.kr/bucketList/bg-grid.png");
+        nav {
+            background-color: #5f9ea0;
+            display: flex;
+            justify-content: center;
+            padding: 10px 0;
         }
-
-        .msg {
+        nav a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
             font-weight: bold;
         }
-
-        .bucket {
-            width: 160px;
-            height: 160px;
+        nav a:hover {
+            text-decoration: underline;
         }
-
-        .img1 {
-            background-image: url("https://s3.ap-northeast-2.amazonaws.com/materials.spartacodingclub.kr/bucketList/bucket-red.png");
-            background-size: cover;
-            background-position: center;
+        main {
+            padding: 20px;
+            text-align: center;
         }
-
-        .img2 {
-            background-image: url("https://s3.ap-northeast-2.amazonaws.com/materials.spartacodingclub.kr/bucketList/bucket-lightred.png");
-            background-size: cover;
-            background-position: center;
+        section {
+            margin-bottom: 20px;
+        }
+        footer {
+            background-color: #4682b4;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
         }
     </style>
-    <link rel="stylesheet" type="text/css"
-        href="https://s3.ap-northeast-2.amazonaws.com/materials.spartacodingclub.kr/bucketList/sparta-bucket2.css">
-
 </head>
+<body>
+    <header>
+        <h1>환영합니다! 나만의 홈페이지에 오신 것을 환영합니다</h1>
+    </header>
 
-<body class="bg-t5 center">
-    <h1 class="title-t5">MY NEW-YEAR's RESOLUTION</h1>
-    <p class="msg">Good to begin well, better to end well</p>
-    <div class="row flex-row wrap">
-        <div class="bucket img1-t5 center">Creating my website with coding</div>
-        <div class="bucket img2-t5 center">Achieving the OPIC Score IH</div>
-        <div class="bucket img2-t5 center">Getting GPA over 4.0 </div>
-        <div class="bucket img1-t5 center">Achieving a weight of 72kg</div>
-        <div class="bucket img1-t5 center">Getting a job as an engineer</div>
-        <div class="bucket img2-t5 center">Working out at least five times a week</div>
-    </div>
+    <nav>
+        <a href="#about">소개</a>
+        <a href="#portfolio">포트폴리오</a>
+        <a href="#contact">연락하기</a>
+    </nav>
 
+    <main>
+        <section id="about">
+            <h2>소개</h2>
+            <p>안녕하세요! 저는 창의적인 웹 개발을 좋아하는 [이름]입니다. 이 홈페이지는 저의 관심사와 작업물을 공유하기 위해 제작되었습니다.</p>
+        </section>
+
+        <section id="portfolio">
+            <h2>포트폴리오</h2>
+            <p>제가 만든 프로젝트와 작업물을 이곳에서 확인하세요.</p>
+            <ul>
+                <li><a href="#">프로젝트 1</a></li>
+                <li><a href="#">프로젝트 2</a></li>
+                <li><a href="#">프로젝트 3</a></li>
+            </ul>
+        </section>
+
+        <section id="contact">
+            <h2>연락하기</h2>
+            <p>저에게 연락하고 싶으시면 아래의 이메일로 메일을 보내주세요.</p>
+            <p><strong>Email:</strong> myemail@example.com</p>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 나만의 홈페이지. 모든 권리 보유.</p>
+    </footer>
 </body>
-
 </html>
