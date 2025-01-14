@@ -3,130 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>포로포로 삿포로🎄✈🛫!</title>
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
+    <title>서울 네일아트샵</title>
     <style>
         body {
-            font-family: 'Dancing Script', cursive;
-            margin: 0;
+            font-family: Arial, sans-serif;
+            margin: 20px;
             padding: 0;
-            background-image: url('https://example.com/winter-background.jpg'); /* 겨울 배경 이미지 URL */
-            background-size: cover;
-            background-attachment: fixed;
-            color: #fff;
+            background-color: #f9f9f9;
         }
-        header {
-            background-color: rgba(70, 130, 180, 0.8); /* 투명한 파란색 */
-            color: white;
-            padding: 15px 20px;
+        h1 {
             text-align: center;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
-        }
-        nav {
-            background-color: rgba(95, 158, 160, 0.8);
-            display: flex;
-            justify-content: center;
-            padding: 10px 0;
-        }
-        nav a {
-            color: white;
-            margin: 0 20px;
-            text-decoration: none;
-            font-size: 1.2rem;
-            font-weight: bold;
-        }
-        nav a:hover {
-            text-decoration: underline;
-            color: #add8e6;
-        }
-        main {
-            padding: 30px;
-            text-align: center;
-            background-color: rgba(0, 0, 0, 0.6); /* 텍스트 영역 투명 배경 */
-            border-radius: 10px;
-            margin: 20px auto;
-            width: 90%;
-            max-width: 800px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-        }
-        section {
-            margin-bottom: 30px;
-        }
-        section h2 {
-            font-size: 2rem;
-            margin-bottom: 15px;
-            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
-        }
-        footer {
-            background-color: rgba(70, 130, 180, 0.8);
-            color: white;
-            text-align: center;
-            padding: 10px 0;
-            position: fixed;
-            width: 100%;
-            bottom: 0;
-            font-size: 0.9rem;
-        }
-        img.snowman {
-            width: 200px;
-            height: auto;
-            margin: 20px auto;
+            color: #333;
         }
         ul {
-            list-style-type: none;
+            list-style: none;
             padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 20px;
         }
-        ul li {
-            margin: 10px 0;
-        }
-        ul li a {
-            color: #add8e6;
-            text-decoration: none;
-            font-size: 1.1rem;
-        }
-        ul li a:hover {
+        li {
+            margin: 10px 15px;
+            cursor: pointer;
+            color: #007BFF;
             text-decoration: underline;
+        }
+        li:hover {
+            color: #0056b3;
         }
     </style>
 </head>
 <body>
-    <header>
-        <h1>포로포로 삿포로🎄✈🛫!</h1>
-    </header>
-
-    <nav>
-        <a href="#about">숙소</a>
-        <a href="#portfolio">식당</a>
-        <a href="#contact">계획</a>
-    </nav>
-
-    <main>
-        <section id="about">
-            <h2>숙소</h2>
-            <p>눈 덮인 하얀 풍경 속 아늑한 숙소를 준비했습니다.</p>
-        </section>
-
-        <section id="portfolio">
-            <h2>식당</h2>
-            <p>따뜻한 국물 요리와 함께하는 맛있는 여정!</p>
-            <ul>
-                <li><a href="#">2/28의 추천 메뉴</a></li>
-                <li><a href="#">3/1의 맛집</a></li>
-                <li><a href="#">3/2의 디저트 카페</a></li>
-                <li><a href="#">3/3의 특별한 코스</a></li>
-            </ul>
-        </section>
-
-        <section id="contact">
-            <h2>계획</h2>
-            <p>눈 내리는 거리, 스키장, 온천까지 모두 담긴 일정!</p>
-            <p><strong>즐거운 겨울 여행</strong></p>
-            <img src="https://example.com/snowman.jpg" alt="눈사람" class="snowman"> <!-- 눈사람 이미지 URL -->
-        </section>
-    </main>
-
-    <footer>
-        <p>&copy; 2025 우기요미의 홈페이지. 모든 권리 보유.</p>
-    </footer>
+    <h1>서울 네일아트샵</h1>
+    <p style="text-align: center;">구를 클릭하면 해당 구의 네일아트샵 정보가 새로운 페이지에서 열립니다.</p>
+    <ul>
+        <li><a href="shops.html?district=강남구">강남구</a></li>
+        <li><a href="shops.html?district=서초구">서초구</a></li>
+        <li><a href="shops.html?district=관악구">관악구</a></li>
+        <li><a href="shops.html?district=성동구">성동구</a></li>
+        <li><a href="shops.html?district=중랑구">중랑구</a></li>
+        <li><a href="shops.html?district=동대문구">동대문구</a></li>
+        <li><a href="shops.html?district=마포구">마포구</a></li>
+        <li><a href="shops.html?district=강북구">강북구</a></li>
+        <li><a href="shops.html?district=중구">중구</a></li>
+    </ul>
 </body>
 </html>

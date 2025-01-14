@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>네일아트샵 정보</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        .shop-list {
+            margin-top: 30px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 20px;
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .shop {
+            margin-bottom: 15px;
+        }
+        .shop h3 {
+            margin: 0;
+            font-size: 18px;
+            color: #333;
+        }
+        .shop p {
+            margin: 5px 0;
+            font-size: 14px;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+    <h1 id="title">네일아트샵 정보</h1>
+    <div class="shop-list" id="shop-list">
+        <p>데이터를 불러오는 중...</p>
+    </div>
+
+    <script>
+        // 구별 네일아트샵 데이터
+        const nailShops = {
+            "강남구": [
+                { name: "네일위자드", location: "강남구 역삼동", phone: "02-123-4567", price: "₩30,000~₩50,000" },
+                { name: "탄네일", location: "강남구 선릉로", phone: "02-234-5678", price: "₩40,000~₩60,000" }
+            ],
+            "서초구": [
+                { name: "네일에끌라", location: "서초구 서래로", phone: "02-123-4567", price: "₩30,000~₩50,000" }
+            ],
+            "관악구": [
+                { name: "네일샵스트릿", location: "관악구 신림동", phone: "02-345-6789", price: "₩25,000~₩45,000" }
+            ],
+            "성동구": [
+                { name: "공간네일 왕십리점", location: "성동구 왕십리로", phone: "02-543-6789", price: "₩35,000~₩60,000" }
+            ],
+            "중랑구": [
+                { name: "하은네일 면목점", location: "중랑구 면목로", phone: "02-123-4567", price: "₩30,000~₩50,000" }
+            ],
+            "동대문구": [
+                { name: "오르네일", location: "동대문구 전농로", phone: "02-234-5678", price: "₩40,000~₩60,000" }
+            ],
+            "마포구": [
+                { name: "다혜킴네일 홍대점", location: "마포구 와우산로27길", phone: "02-345-6789", price: "₩35,000~₩60,000" }
+            ],
+            "강북구": [
+                { name: "네일리스트네일", location: "강북구 도봉로", phone: "02-543-6789", price: "₩50,000~₩70,000" }
+            ],
+            "중구": [
+                { name: "명동 네일샵", location: "중구 충무로1가", phone: "02-234-5678", price: "₩40,000~₩60,000" }
+            ]
+        };
+
+        // URL에서 구 이름 가져오기
+        const params = new URLSearchParams(window.location.search);
+        const district = params.get("district");
+
+        const shopListDiv = document.getElementById("shop-list");
+        const title = document.getElementById("title");
+
+        // 데이터 렌더링
+        if (district && nailShops[district]) {
+            title.innerText = `${district}의 네일아트샵`;
+            const shops = nailShops[district];
+            shopListDiv.innerHTML = "";
+
+            shops.forEach(shop => {
+                shopListDiv.innerHTML += `
+                    <div class="shop">
+                        <h3>${shop.name}</h3>
+                        <p><strong>위치:</strong> ${shop.location}</p>
+                        <p><strong>전화번호:</strong> ${shop.phone}</p>
+                        <p><strong>가격:</strong> ${shop.price}</p>
+                    </div>
+                `;
+            });
+        } else {
+            shopListDiv.innerHTML = "<p>해당 구에 대한 정보가 없습니다.</p>";
+        }
+    </script>
+</body>
+</html>
