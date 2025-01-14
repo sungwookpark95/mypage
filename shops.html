@@ -16,15 +16,7 @@
             color: #333;
         }
         .shop-list {
-            margin-top: 30px;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-            padding: 20px;
-            background-color: white;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
         }
         .shop {
             margin-bottom: 15px;
@@ -39,6 +31,13 @@
             font-size: 14px;
             color: #555;
         }
+        #map {
+            width: 100%;
+            height: 400px;
+            margin-top: 20px;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+        }
     </style>
 </head>
 <body>
@@ -46,38 +45,19 @@
     <div class="shop-list" id="shop-list">
         <p>데이터를 불러오는 중...</p>
     </div>
+    <div id="map"></div>
 
     <script>
         // 구별 네일아트샵 데이터
         const nailShops = {
             "강남구": [
-                { name: "네일위자드", location: "강남구 역삼동", phone: "02-123-4567", price: "₩30,000~₩50,000" },
-                { name: "탄네일", location: "강남구 선릉로", phone: "02-234-5678", price: "₩40,000~₩60,000" }
+                { name: "네일위자드", location: "강남구 역삼동", phone: "02-123-4567", price: "₩30,000~₩50,000", lat: 37.5009, lng: 127.0364 },
+                { name: "탄네일", location: "강남구 선릉로", phone: "02-234-5678", price: "₩40,000~₩60,000", lat: 37.5081, lng: 127.0487 }
             ],
             "서초구": [
-                { name: "네일에끌라", location: "서초구 서래로", phone: "02-123-4567", price: "₩30,000~₩50,000" }
-            ],
-            "관악구": [
-                { name: "네일샵스트릿", location: "관악구 신림동", phone: "02-345-6789", price: "₩25,000~₩45,000" }
-            ],
-            "성동구": [
-                { name: "공간네일 왕십리점", location: "성동구 왕십리로", phone: "02-543-6789", price: "₩35,000~₩60,000" }
-            ],
-            "중랑구": [
-                { name: "하은네일 면목점", location: "중랑구 면목로", phone: "02-123-4567", price: "₩30,000~₩50,000" }
-            ],
-            "동대문구": [
-                { name: "오르네일", location: "동대문구 전농로", phone: "02-234-5678", price: "₩40,000~₩60,000" }
-            ],
-            "마포구": [
-                { name: "다혜킴네일 홍대점", location: "마포구 와우산로27길", phone: "02-345-6789", price: "₩35,000~₩60,000" }
-            ],
-            "강북구": [
-                { name: "네일리스트네일", location: "강북구 도봉로", phone: "02-543-6789", price: "₩50,000~₩70,000" }
-            ],
-            "중구": [
-                { name: "명동 네일샵", location: "중구 충무로1가", phone: "02-234-5678", price: "₩40,000~₩60,000" }
+                { name: "네일에끌라", location: "서초구 서래로", phone: "02-123-4567", price: "₩30,000~₩50,000", lat: 37.4993, lng: 127.0117 }
             ]
+            // 다른 구 데이터 추가 가능
         };
 
         // URL에서 구 이름 가져오기
@@ -87,25 +67,49 @@
         const shopListDiv = document.getElementById("shop-list");
         const title = document.getElementById("title");
 
-        // 데이터 렌더링
-        if (district && nailShops[district]) {
-            title.innerText = `${district}의 네일아트샵`;
-            const shops = nailShops[district];
-            shopListDiv.innerHTML = "";
-
-            shops.forEach(shop => {
-                shopListDiv.innerHTML += `
-                    <div class="shop">
-                        <h3>${shop.name}</h3>
-                        <p><strong>위치:</strong> ${shop.location}</p>
-                        <p><strong>전화번호:</strong> ${shop.phone}</p>
-                        <p><strong>가격:</strong> ${shop.price}</p>
-                    </div>
-                `;
+        // Google Maps 초기화
+        let map;
+        function initMap() {
+            map = new google.maps.Map(document.getElementById("map"), {
+                center: { lat: 37.5665, lng: 126.9780 }, // 서울 중심 좌표
+                zoom: 12
             });
-        } else {
-            shopListDiv.innerHTML = "<p>해당 구에 대한 정보가 없습니다.</p>";
+
+            if (district && nailShops[district]) {
+                title.innerText = `${district}의 네일아트샵`;
+                const shops = nailShops[district];
+                shopListDiv.innerHTML = "";
+
+                shops.forEach(shop => {
+                    shopListDiv.innerHTML += `
+                        <div class="shop">
+                            <h3>${shop.name}</h3>
+                            <p><strong>위치:</strong> ${shop.location}</p>
+                            <p><strong>전화번호:</strong> ${shop.phone}</p>
+                            <p><strong>가격:</strong> ${shop.price}</p>
+                        </div>
+                    `;
+
+                    // 지도에 마커 추가
+                    new google.maps.Marker({
+                        position: { lat: shop.lat, lng: shop.lng },
+                        map: map,
+                        title: shop.name
+                    });
+                });
+
+                // 지도를 첫 번째 샵의 위치로 이동
+                if (shops.length > 0) {
+                    map.setCenter({ lat: shops[0].lat, lng: shops[0].lng });
+                    map.setZoom(14);
+                }
+            } else {
+                shopListDiv.innerHTML = "<p>해당 구에 대한 정보가 없습니다.</p>";
+            }
         }
     </script>
+
+    <!-- Google Maps API 키 추가 -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_GOOGLE_MAPS_API_KEY&callback=initMap" async defer></script>
 </body>
 </html>
